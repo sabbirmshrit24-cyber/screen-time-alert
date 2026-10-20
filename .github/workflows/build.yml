@@ -16,7 +16,8 @@ jobs:
           gradle-version: 8.7
       - name: Build
         run: |
-          unzip -o ScreenTimeAlert.zip
+          ZIP=$(ls ScreenTimeAlert*.zip | LC_ALL=C sort | tail -n 1)
+          unzip -o "$ZIP"
           cd ScreenTimeAlert
           gradle assembleDebug --no-daemon
       - uses: actions/upload-artifact@v4
